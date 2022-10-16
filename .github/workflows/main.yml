@@ -28,6 +28,7 @@ jobs:
       - name: Include vendor files
         uses: php-actions/composer@v6
         with:
+          path: peendev-markdown
           dev: no
       - name: Build project
         run: |

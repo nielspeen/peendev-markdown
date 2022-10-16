@@ -3,7 +3,7 @@ This plug-in replaces the default ClassicPress editor with the EasyMDE Markdown 
 ## Changelog
 
 v1.0.1 
- * Use built-in Markdown renderer.
+ * Use built-in Markdown renderer. (You should remove the azrcrv-markdown plug-in).
  * Support Markdown in comments.
 
 v1.0.0 Initial release.
