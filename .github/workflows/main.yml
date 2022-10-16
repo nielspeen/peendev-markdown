@@ -29,9 +29,8 @@ jobs:
         uses: php-actions/composer@v6
         with:
           php_version: 8.0
-          working_dir: peendev-markdown
+          working_dir: peendev-markdown/
           dev: no
-          args: -volume app/:peendev-markdown
       - name: Build project
         run: |
           mkdir build
