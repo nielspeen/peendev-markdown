@@ -5,7 +5,7 @@ This plug-in replaces the default ClassicPress editor with the EasyMDE Markdown 
 v1.0.1 
  * Use built-in Markdown renderer.
  * Support Markdown in comments.
- 
+
 v1.0.0 Initial release.
  * Support Markdown in Posts and Pages.
 
@@ -19,4 +19,4 @@ No special instructions. Install & activate [nielspeen/peendev-markdown](https:/
 
 ## Upgrading
 
-If you're upgrading from v1.0.0, you should remove the azrcrv-markdown plugin. Peendev-markdown now comes with a built-in markdown renderer (CommonMark).
+If you're upgrading from v1.0.0, you should remove the azrcrv-markdown plug-in. Peendev-markdown now comes with a built-in markdown renderer (CommonMark).
