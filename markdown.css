@@ -1,5 +1,5 @@
 
-#ed_toolbar { 
+#ed_toolbar, #qt_content_toolbar { 
     display: none;
 }
 

@@ -3,7 +3,7 @@
 Plugin Name: Peen.dev Markdown Editor for ClassicPress
 Plugin URI: https://peen.dev/classicpress/markdown
 Description: Replaces the Visual and Text editors with a Markdown editor. You must also install azurecurve/azrcrv-markdown to render the Markdown on the front-end.
-Version: 1.0.1
+Version: 1.0.2
 Author: Niels Peen
 Author URI: https://peen.dev/
 License: GPLv2 or later
@@ -30,6 +30,15 @@ require( plugin_dir_path( __FILE__ ) . 'vendor/autoload.php' );
 
 use League\CommonMark\GithubFlavoredMarkdownConverter;
 
+function peendev_markdown_is_relevant() {
+    global $pagenow;
+
+    if( $pagenow == 'post.php' || $pagenow == 'page.php' || $pagenow == 'comment.php' )
+        return true;
+
+    return false;
+}
+
 /*
  * Load EasyMDE stylesheet
  */
@@ -45,7 +54,11 @@ function peendev_markdown_head() {
  */
 add_action( 'admin_footer', 'peendev_markdown_footer', 999 );
 function peendev_markdown_footer() {
-    echo '<script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>';
+
+    if( peendev_markdown_is_relevant() !== true ) 
+        return;
+
+        echo '<script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>';
     echo '<script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>';
 
     $script = file_get_contents( plugin_dir_path( __FILE__ ) . 'markdown.js');
@@ -66,14 +79,19 @@ add_filter( 'user_can_richedit', '__return_false', 50 );
  */
 add_action( 'wp_print_scripts', 'peendev_markdown_dequeue_scripts', 100);
 function peendev_markdown_dequeue_scripts() {
-    wp_deregister_script( 'quicktags' );
+    if( peendev_markdown_is_relevant() !== true ) 
+        return;
+
+        wp_deregister_script( 'quicktags' );
 }
 
 
 add_action( 'wp_enqueue_scripts', 'peendev_markdown_dequeue_styles', 100 );
 function peendev_markdown_dequeue_styles() {
-	wp_dequeue_style( 'code-editor' );
+    if( peendev_markdown_is_relevant() !== true ) 
+        return;
 
+        wp_dequeue_style( 'code-editor' );
 }
 
 add_filter( 'the_content', 'peendev_markdown_content_render', 1, 1);
