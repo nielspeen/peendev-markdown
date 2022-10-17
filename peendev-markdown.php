@@ -44,8 +44,8 @@ function peendev_markdown_is_relevant() {
  */
 add_action( 'admin_head', 'peendev_markdown_head' );
 function peendev_markdown_head() {
-    echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">';
-    echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css">';
+    $url = plugins_url('markdown.css', __FILE__);
+    echo "<link rel=\"stylesheet\" href=\"{$url}\">";
 }
 
 
@@ -58,14 +58,8 @@ function peendev_markdown_footer() {
     if( peendev_markdown_is_relevant() !== true ) 
         return;
 
-        echo '<script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>';
-    echo '<script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>';
-
-    $script = file_get_contents( plugin_dir_path( __FILE__ ) . 'markdown.js');
-    $css    = file_get_contents( plugin_dir_path( __FILE__ ) . 'markdown.css');
-
-    echo "<script>{$script}</script>";
-    echo "<style>{$css}</style>";
+    $url = plugins_url('markdown.js', __FILE__);
+    echo "<script src=\"{$url}\"></script>";
 }
 
 
