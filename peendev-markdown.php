@@ -31,12 +31,14 @@ require( plugin_dir_path( __FILE__ ) . 'vendor/autoload.php' );
 use League\CommonMark\GithubFlavoredMarkdownConverter;
 
 function peendev_markdown_is_relevant() {
+
     global $pagenow;
 
     if( $pagenow == 'post.php' || $pagenow == 'page.php' || $pagenow == 'comment.php' )
         return true;
 
     return false;
+    
 }
 
 /*
@@ -44,8 +46,11 @@ function peendev_markdown_is_relevant() {
  */
 add_action( 'admin_head', 'peendev_markdown_head' );
 function peendev_markdown_head() {
+
     $url = plugins_url('markdown.css', __FILE__);
+
     echo "<link rel=\"stylesheet\" href=\"{$url}\">";
+
 }
 
 
@@ -60,6 +65,7 @@ function peendev_markdown_footer() {
 
     $url = plugins_url('markdown.js', __FILE__);
     echo "<script src=\"{$url}\"></script>";
+
 }
 
 
@@ -73,19 +79,22 @@ add_filter( 'user_can_richedit', '__return_false', 50 );
  */
 add_action( 'wp_print_scripts', 'peendev_markdown_dequeue_scripts', 100);
 function peendev_markdown_dequeue_scripts() {
+
     if( peendev_markdown_is_relevant() !== true ) 
         return;
 
-        wp_deregister_script( 'quicktags' );
-}
+    wp_deregister_script( 'quicktags' );
 
+}
 
 add_action( 'wp_enqueue_scripts', 'peendev_markdown_dequeue_styles', 100 );
 function peendev_markdown_dequeue_styles() {
+
     if( peendev_markdown_is_relevant() !== true ) 
         return;
 
-        wp_dequeue_style( 'code-editor' );
+    wp_dequeue_style( 'code-editor' );
+
 }
 
 add_filter( 'the_content', 'peendev_markdown_content_render', 1, 1);
@@ -95,11 +104,6 @@ function peendev_markdown_content_render( $content ) {
 
     return $converter->convert(do_shortcode($content));
 }
-
-
-// remove_filter( 'comment_text'. 'make_clickable', 9 );
-// remove_filter( 'comment_text'. 'force_balance_tags', 25 );
-// remove_filter( 'comment_text'. 'wpautop', 30 );
 
 add_filter( 'comment_text', 'peendev_markdown_comment_render', 8, 3 );
 function peendev_markdown_comment_render( $comment_text, $comment, $args ) {
