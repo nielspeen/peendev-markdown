@@ -3,7 +3,7 @@
 Plugin Name: Peen.dev Markdown Editor for ClassicPress
 Plugin URI: https://peen.dev/classicpress/markdown
 Description: Replaces the Visual and Text editors with a Markdown editor. You must also install azurecurve/azrcrv-markdown to render the Markdown on the front-end.
-Version: 1.0.2
+Version: 1.0.3
 Author: Niels Peen
 Author URI: https://peen.dev/
 License: GPLv2 or later
