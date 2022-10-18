@@ -34,11 +34,12 @@ function peendev_markdown_is_relevant() {
 
     global $pagenow;
 
-    if( $pagenow == 'post.php' || $pagenow == 'page.php' || $pagenow == 'comment.php' )
+    if( $pagenow == 'post.php' || $pagenow == 'page.php' || $pagenow == 'comment.php'
+        || $pagenow == 'post-new.php' )
         return true;
 
     return false;
-    
+
 }
 
 /*
