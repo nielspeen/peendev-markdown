@@ -15,8 +15,9 @@ v1.0.0 Initial release.
 
 ## Requirements
 
-Internet access. (EasyMDE is loaded from a CDN. The editor will not work in an offline environment.)
-
+ * ClassicPress >= 1.4.3
+ * PHP >= 8.1.0
+ 
 ## Installation
 
 No special instructions. Install & activate [nielspeen/peendev-markdown](https://github.com/nielspeen/peendev-markdown/releases). There is no settings page.
