@@ -2,6 +2,9 @@ This plug-in replaces the default ClassicPress editor with the EasyMDE Markdown 
 
 ## Changelog
 
+v1.0.5 (not yet released)
+ * Remove Premium URL from ClassicPress directory headers.
+ 
 v1.0.4
  * Add headers required for ClassicPress plug-in directory.
 
