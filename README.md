@@ -2,6 +2,9 @@ This plug-in replaces the default ClassicPress editor with the EasyMDE Markdown 
 
 ## Changelog
 
+v1.0.4
+ * Add headers required for ClassicPress plug-in directory.
+ 
 v1.0.3
  * Fix issue where EasyMDE did not show up on post-new.php.
  * Add readme.txt with PHP 8.1 requirement.
